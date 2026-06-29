@@ -8,6 +8,16 @@ By the end of 6 days, students will understand how the web works, build a small 
 
 This course is designed for beginners. Keep every explanation practical, visual, and connected to one small project.
 
+## 3-Day Node.js Learning Path
+
+Days 3, 4, and 5 are the backend core of this course.
+
+| Day | Node.js Level | What Students Learn |
+| --- | --- | --- |
+| Day 3 | Basic Node.js | Runtime, terminal, npm, modules, simple scripts, first HTTP server, first Express routes |
+| Day 4 | Intermediate Node.js | Express routing, middleware, REST APIs, request body, route params, MongoDB, Mongoose |
+| Day 5 | Advanced Beginner Node.js | Full CRUD, auth, password hashing, JWT, protected routes, ownership checks, safer error handling |
+
 ## Teaching Rule
 
 Use this pattern every day:
@@ -795,11 +805,17 @@ button {
 
 ---
 
-# Day 3: Building Your Own Server with Express.js
+# Day 3: Node.js Basics and Your First Server
+
+## Node.js Level
+
+Basic Node.js.
+
+Today students learn what Node.js is, how to run JavaScript outside the browser, how npm works, and how a server starts listening on a port.
 
 ## What are Node.js and Express.js?
 
-Before building our server, it's important to understand the tools we are using:
+Before building our Express server, students must understand the tools we are using:
 
 - **Node.js**: Normally, JavaScript only runs *inside* a web browser (like Chrome or Safari) to make web pages interactive. **Node.js** is a special runtime environment that allows JavaScript to run directly *on your computer* or *on a server*. This means you can use JavaScript to read files, connect to databases, and act as a backend.
 - **Express.js**: Writing a web server from scratch in pure Node.js can be complicated and repetitive. **Express.js** is a "framework" (a pre-written library of code) that makes building web servers and APIs incredibly simple. It handles routing and HTTP requests easily.
@@ -815,13 +831,205 @@ The server will store tasks in a JavaScript array. The data will disappear when 
 | Term | Simple Meaning |
 | --- | --- |
 | Node.js | Runs JavaScript outside the browser |
+| Runtime | A place where code can run |
+| Terminal | The place where we type commands |
 | npm | Tool to install JavaScript packages |
+| `package.json` | Project information and dependency list |
+| Module | A reusable file or package |
+| `require()` | Imports code from another file or package |
+| HTTP Server | A program that receives web requests and sends responses |
 | Express.js | A small framework for building APIs |
 | Route | A URL handled by the server |
 | `GET` | Read data |
 | `POST` | Create data |
 | Middleware | Code that runs before the route |
 | `app.listen(3000)` | Starts the server on port `3000` |
+
+## 8-Hour Practical Plan
+
+| Time | Activity |
+| --- | --- |
+| 09:30 - 10:00 | Recap JavaScript and explain Node.js |
+| 10:00 - 10:45 | Practicals 1 and 2 |
+| 10:45 - 11:00 | Break |
+| 11:00 - 12:15 | Practicals 3 and 4 |
+| 12:15 - 01:00 | Practical 5 |
+| 01:00 - 02:00 | Lunch |
+| 02:00 - 03:15 | Practicals 6 and 7 |
+| 03:15 - 03:30 | Break |
+| 03:30 - 04:45 | Practical 8 |
+| 04:45 - 05:30 | API testing and recap |
+
+## Node.js Practicals
+
+### Practical 1: Check Node.js and npm
+
+Goal: Confirm the tools are installed.
+
+```bash
+node -v
+npm -v
+```
+
+Expected learning:
+
+- `node` runs JavaScript.
+- `npm` installs packages.
+
+### Practical 2: Run a JavaScript File with Node
+
+Create `hello-node.js`:
+
+```javascript
+const studentName = "Anu";
+
+console.log("Hello from Node.js");
+console.log(`Student: ${studentName}`);
+```
+
+Run:
+
+```bash
+node hello-node.js
+```
+
+Expected learning:
+
+- JavaScript can run outside the browser.
+- Backend code usually runs with Node.js.
+
+### Practical 3: Use Functions in Node.js
+
+Create `calculator.js`:
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+console.log(add(10, 5));
+console.log(multiply(10, 5));
+```
+
+Run:
+
+```bash
+node calculator.js
+```
+
+Expected learning:
+
+- Backend code is still JavaScript.
+- Functions help us organize logic.
+
+### Practical 4: Create a Simple Module
+
+Create `math.js`:
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+
+module.exports = { add };
+```
+
+Create `app.js`:
+
+```javascript
+const math = require("./math");
+
+console.log(math.add(2, 3));
+```
+
+Run:
+
+```bash
+node app.js
+```
+
+Expected learning:
+
+- Large backend apps are split into files.
+- `module.exports` shares code.
+- `require()` imports code.
+
+### Practical 5: Create `package.json`
+
+Goal: Start a real Node.js project.
+
+```bash
+mkdir day-3-task-api
+cd day-3-task-api
+npm init -y
+```
+
+Open `package.json` and identify:
+
+- Project name
+- Version
+- Scripts
+- Dependencies
+
+Expected learning:
+
+- `package.json` describes the Node.js project.
+
+### Practical 6: Install and Use a Package
+
+Install Express:
+
+```bash
+npm install express
+```
+
+Expected learning:
+
+- Packages are reusable code written by other developers.
+- Installed packages appear in `dependencies`.
+
+### Practical 7: Build a Tiny Node HTTP Server
+
+Create `basic-server.js`:
+
+```javascript
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("Hello from a basic Node.js server");
+});
+
+server.listen(3000, () => {
+  console.log("Server running at http://localhost:3000");
+});
+```
+
+Run:
+
+```bash
+node basic-server.js
+```
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+Expected learning:
+
+- A server waits for requests.
+- `3000` is the port.
+- Express makes server code easier.
+
+### Practical 8: Build the Express Task API
+
+Goal: Build the main Day 3 project using Express.
 
 ## How the Data Flows
 
@@ -839,6 +1047,8 @@ Server sends JSON response
 ```
 
 ## How to Run
+
+If you already created `day-3-task-api` in Practical 5, stay inside that folder and continue from `npm install express`.
 
 ```bash
 mkdir day-3-task-api
@@ -922,6 +1132,11 @@ Content-Type: application/json
 
 ## Student Checklist
 
+- [ ] I can run JavaScript using `node`.
+- [ ] I understand what npm does.
+- [ ] I created a `package.json` file.
+- [ ] I imported code using `require()`.
+- [ ] I built a tiny Node HTTP server.
 - [ ] I installed Express.
 - [ ] I started a server on port `3000`.
 - [ ] I created a `GET` route.
@@ -929,7 +1144,13 @@ Content-Type: application/json
 
 ---
 
-# Day 4: Saving Data with MongoDB and Mongoose
+# Day 4: Intermediate Node.js, Express APIs, and MongoDB
+
+## Node.js Level
+
+Intermediate Node.js.
+
+Today students improve the Day 3 API and learn how real backend apps receive input, use middleware, organize data, and save records in MongoDB.
 
 ## Goal / Project Intro
 
@@ -942,6 +1163,12 @@ Yesterday's tasks disappeared after restarting the server. Today we save tasks p
 | Term | Simple Meaning |
 | --- | --- |
 | Database | A place to store app data |
+| REST API | A predictable API style using resources and HTTP methods |
+| Route Param | A URL value like `/tasks/:id` |
+| Query Param | Extra URL data like `/tasks?completed=true` |
+| Request Body | Data sent by the client in `POST` or `PATCH` |
+| Environment Variable | Secret or setting stored outside the code |
+| `dotenv` | Package that loads `.env` values |
 | SQL | Table-based database style |
 | NoSQL | Document-based database style |
 | MongoDB | A NoSQL database |
@@ -950,6 +1177,175 @@ Yesterday's tasks disappeared after restarting the server. Today we save tasks p
 | Mongoose | A tool that helps Node.js talk to MongoDB |
 | Schema | Rules for what the data should look like |
 | Model | Code used to create, read, update, and delete data |
+
+## 8-Hour Practical Plan
+
+| Time | Activity |
+| --- | --- |
+| 09:30 - 10:00 | Recap Day 3 API |
+| 10:00 - 10:45 | Practicals 1 and 2 |
+| 10:45 - 11:00 | Break |
+| 11:00 - 12:15 | Practicals 3 and 4 |
+| 12:15 - 01:00 | Practical 5 |
+| 01:00 - 02:00 | Lunch |
+| 02:00 - 03:15 | Practicals 6 and 7 |
+| 03:15 - 03:30 | Break |
+| 03:30 - 04:45 | Practical 8 |
+| 04:45 - 05:30 | MongoDB recap and debugging |
+
+## Intermediate Node.js Practicals
+
+### Practical 1: Add Middleware Logging
+
+Goal: See every request that reaches the server.
+
+Add this before your routes:
+
+```javascript
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+```
+
+Expected learning:
+
+- Middleware runs before route handlers.
+- `next()` allows the request to continue.
+
+### Practical 2: Read Data from the Request Body
+
+Goal: Understand how `POST` data enters the backend.
+
+```javascript
+app.post("/practice/body", (req, res) => {
+  res.json({
+    message: "I received your data",
+    body: req.body
+  });
+});
+```
+
+Test with:
+
+```text
+POST http://localhost:3000/practice/body
+Content-Type: application/json
+
+{
+  "title": "Learn request body"
+}
+```
+
+Expected learning:
+
+- `req.body` contains JSON sent by the client.
+
+### Practical 3: Use Route Params
+
+Goal: Read dynamic values from the URL.
+
+```javascript
+app.get("/practice/tasks/:id", (req, res) => {
+  res.json({
+    taskId: req.params.id
+  });
+});
+```
+
+Test:
+
+```text
+GET http://localhost:3000/practice/tasks/123
+```
+
+Expected learning:
+
+- `:id` means the value can change.
+- `req.params.id` reads the value.
+
+### Practical 4: Use Query Params
+
+Goal: Read filters from the URL.
+
+```javascript
+app.get("/practice/search", (req, res) => {
+  res.json({
+    completed: req.query.completed
+  });
+});
+```
+
+Test:
+
+```text
+GET http://localhost:3000/practice/search?completed=true
+```
+
+Expected learning:
+
+- Query params are useful for filtering and searching.
+
+### Practical 5: Move Settings to `.env`
+
+Goal: Keep secrets and settings outside code.
+
+Install:
+
+```bash
+npm install dotenv
+```
+
+Create `.env`:
+
+```text
+PORT=3000
+MONGO_URL=your_mongodb_atlas_connection_string
+```
+
+Use it:
+
+```javascript
+require("dotenv").config();
+
+const PORT = process.env.PORT || 3000;
+```
+
+Expected learning:
+
+- `.env` stores configuration.
+- Do not hardcode secrets in backend code.
+
+### Practical 6: Create a Mongoose Schema
+
+Goal: Define what a task should look like.
+
+Students create `Task.js` using the code below.
+
+Expected learning:
+
+- Schema means rules.
+- Model means a tool for database actions.
+
+### Practical 7: Insert Data into MongoDB
+
+Goal: Save one task permanently.
+
+Students run `seed.js` using the code below.
+
+Expected learning:
+
+- MongoDB keeps data after the Node script stops.
+
+### Practical 8: Read Data from MongoDB
+
+Goal: Retrieve saved tasks.
+
+Students update `seed.js` to add more tasks and print all tasks.
+
+Expected learning:
+
+- `Task.find()` reads documents from MongoDB.
 
 ## How the Data Flows
 
@@ -1038,6 +1434,11 @@ run();
 
 ## Student Checklist
 
+- [ ] I understand middleware and `next()`.
+- [ ] I can read `req.body`.
+- [ ] I can read `req.params`.
+- [ ] I can read `req.query`.
+- [ ] I can use `.env` for settings.
 - [ ] I know why databases are needed.
 - [ ] I created a MongoDB Atlas database.
 - [ ] I connected Node.js to MongoDB.
@@ -1045,7 +1446,13 @@ run();
 
 ---
 
-# Day 5: Full CRUD API and Security Basics
+# Day 5: Advanced Beginner Node.js, CRUD, and Security
+
+## Node.js Level
+
+Advanced beginner Node.js.
+
+Today students combine everything: Express, MongoDB, CRUD, users, password hashing, JWT tokens, protected routes, ownership checks, and safer error handling.
 
 ## Goal / Project Intro
 
@@ -1071,6 +1478,162 @@ We connect Express to MongoDB and add:
 | JWT | A signed token used after login |
 | Protected route | A route that needs a valid token |
 | Authorization header | Where the browser sends the token |
+| Ownership Check | Making sure users can access only their own data |
+| Validation | Checking user input before saving it |
+| Error Handling | Sending safe error messages when something fails |
+
+## 8-Hour Practical Plan
+
+| Time | Activity |
+| --- | --- |
+| 09:30 - 10:00 | Recap Express and MongoDB |
+| 10:00 - 10:45 | Practicals 1 and 2 |
+| 10:45 - 11:00 | Break |
+| 11:00 - 12:15 | Practicals 3 and 4 |
+| 12:15 - 01:00 | Practical 5 |
+| 01:00 - 02:00 | Lunch |
+| 02:00 - 03:15 | Practicals 6 and 7 |
+| 03:15 - 03:30 | Break |
+| 03:30 - 04:45 | Practicals 8 and 9 |
+| 04:45 - 05:30 | Full API test and recap |
+
+## Advanced Node.js Practicals
+
+### Practical 1: Plan the REST API
+
+Goal: Map routes before coding.
+
+| Feature | Method | Route |
+| --- | --- | --- |
+| Register | `POST` | `/register` |
+| Login | `POST` | `/login` |
+| List tasks | `GET` | `/tasks` |
+| Create task | `POST` | `/tasks` |
+| Update task | `PATCH` | `/tasks/:id` |
+| Delete task | `DELETE` | `/tasks/:id` |
+
+Expected learning:
+
+- API design comes before API coding.
+
+### Practical 2: Add Basic Input Validation
+
+Goal: Do not accept empty data.
+
+Example validation:
+
+```javascript
+if (!req.body.title) {
+  return res.status(400).json({ message: "Title is required" });
+}
+```
+
+Expected learning:
+
+- Backends must not trust client input.
+- `400` means the client sent bad or incomplete data.
+
+### Practical 3: Create the User Model
+
+Goal: Store users safely.
+
+Students create a user schema with:
+
+- `email`
+- `passwordHash`
+
+Expected learning:
+
+- Never store plain passwords.
+
+### Practical 4: Hash a Password with bcrypt
+
+Goal: Convert a password into a safe stored hash.
+
+```javascript
+const passwordHash = await bcrypt.hash(req.body.password, 10);
+```
+
+Expected learning:
+
+- Hashing is one-way.
+- During login, we compare the password with the hash.
+
+### Practical 5: Create a JWT Token
+
+Goal: Give the user a signed token after login.
+
+```javascript
+const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+```
+
+Expected learning:
+
+- The token proves the user has logged in.
+- The frontend sends the token with future requests.
+
+### Practical 6: Build Auth Middleware
+
+Goal: Protect private routes.
+
+Students inspect the `authRequired` function in the code below.
+
+Expected learning:
+
+- Middleware can stop unauthorized requests.
+- `401` means login is required.
+
+### Practical 7: Add Full Task CRUD
+
+Goal: Create, read, update, and delete tasks in MongoDB.
+
+Students test:
+
+- `GET /tasks`
+- `POST /tasks`
+- `PATCH /tasks/:id`
+- `DELETE /tasks/:id`
+
+Expected learning:
+
+- CRUD is the foundation of most backend apps.
+
+### Practical 8: Add Ownership Checks
+
+Goal: Make sure users see only their own tasks.
+
+Important pattern:
+
+```javascript
+const tasks = await Task.find({ userId: req.userId });
+```
+
+For update and delete:
+
+```javascript
+{ _id: req.params.id, userId: req.userId }
+```
+
+Expected learning:
+
+- Never search only by task ID.
+- Always include the current user's ID.
+
+### Practical 9: Test Failure Cases
+
+Goal: Prove the API is safer.
+
+Students test:
+
+- Missing token
+- Wrong password
+- Empty task title
+- Updating a task that does not belong to the user
+- Deleting a task that does not exist
+
+Expected learning:
+
+- Good APIs handle both success and failure.
 
 ## How the Data Flows
 
@@ -1142,14 +1705,22 @@ function authRequired(req, res, next) {
     return res.status(401).json({ message: "Token required" });
   }
 
-  const token = authHeader.replace("Bearer ", "");
-  const payload = jwt.verify(token, process.env.JWT_SECRET);
+  try {
+    const token = authHeader.replace("Bearer ", "");
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
 
-  req.userId = payload.userId;
-  next();
+    req.userId = payload.userId;
+    next();
+  } catch (error) {
+    res.status(401).json({ message: "Invalid token" });
+  }
 }
 
 app.post("/register", async (req, res) => {
+  if (!req.body.email || !req.body.password) {
+    return res.status(400).json({ message: "Email and password are required" });
+  }
+
   const passwordHash = await bcrypt.hash(req.body.password, 10);
 
   const user = await User.create({
@@ -1161,6 +1732,10 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
+  if (!req.body.email || !req.body.password) {
+    return res.status(400).json({ message: "Email and password are required" });
+  }
+
   const user = await User.findOne({ email: req.body.email });
 
   if (!user) {
@@ -1183,6 +1758,10 @@ app.get("/tasks", authRequired, async (req, res) => {
 });
 
 app.post("/tasks", authRequired, async (req, res) => {
+  if (!req.body.title) {
+    return res.status(400).json({ message: "Title is required" });
+  }
+
   const task = await Task.create({
     title: req.body.title,
     userId: req.userId
@@ -1266,11 +1845,14 @@ Content-Type: application/json
 
 ## Student Checklist
 
+- [ ] I can plan REST API routes before coding.
+- [ ] I can validate required input.
 - [ ] I understand CRUD.
 - [ ] I hashed a password with bcrypt.
 - [ ] I created a JWT after login.
 - [ ] I protected task routes.
 - [ ] I made sure users can only access their own tasks.
+- [ ] I tested success and failure cases.
 
 ---
 
