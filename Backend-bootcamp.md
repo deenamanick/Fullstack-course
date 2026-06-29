@@ -1843,6 +1843,31 @@ Content-Type: application/json
 - Try logging in with the wrong password.
 - Create two users and confirm each user sees only their own tasks.
 
+## Industry Recognized Pattern: MVC & Layered Architecture
+
+In this bootcamp, we wrote all our code inside one file (`server.js`). This is great for learning! However, if you work at a real company, putting thousands of lines of code in one file becomes impossible to manage.
+
+The **Industry Recognized Pattern** for organizing backend applications is called **MVC (Model-View-Controller)** or **Layered Architecture**. 
+
+Instead of one giant file, the industry standard is to split the code into specific folders based on their exact job:
+
+```text
+📁 my-app/
+ ├── 📁 models/        # Code that talks to MongoDB (e.g., User.js, Task.js)
+ ├── 📁 controllers/   # The logic (e.g., checking passwords, saving tasks)
+ ├── 📁 routes/        # The URL endpoints (e.g., defining POST /login)
+ ├── 📁 middleware/    # Protections (e.g., authRequired.js)
+ ├── 📄 server.js      # Very clean, only used to start the server
+ └── 📄 .env           # Secret configuration
+```
+
+### Why does the industry follow this?
+1. **Separation of Concerns:** Each file has exactly one job. If there is a database error, you know to look in the `models/` folder.
+2. **Teamwork:** Multiple developers can work on different files at the same time without creating conflicts.
+3. **Scalability:** As the app grows from 10 routes to 1,000 routes, the folder structure keeps everything organized.
+
+*Tip: After you finish this bootcamp, challenge yourself to split your Day 5 API into this industry-standard folder structure!*
+
 ## Student Checklist
 
 - [ ] I can plan REST API routes before coding.
