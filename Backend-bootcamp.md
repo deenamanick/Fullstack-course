@@ -158,12 +158,282 @@ a {
 }
 ```
 
-## Practice
+## 8-Hour Practical Plan
 
-- Change the name.
-- Add one more learning goal.
-- Change the page color.
-- Explain what happens when a browser opens the page.
+| Time | Activity |
+| --- | --- |
+| 09:30 - 10:00 | Icebreaker: What happens when we open a website? |
+| 10:00 - 10:45 | Practicals 1 and 2 |
+| 10:45 - 11:00 | Break |
+| 11:00 - 12:15 | Practicals 3 and 4 |
+| 12:15 - 01:00 | Practical 5 |
+| 01:00 - 02:00 | Lunch |
+| 02:00 - 03:15 | Practicals 6 and 7 |
+| 03:15 - 03:30 | Break |
+| 03:30 - 04:45 | Practicals 8 and 9 |
+| 04:45 - 05:30 | Practical 10 and student demo |
+
+## Day 1 Practicals
+
+### Practical 1: Find the IP Address
+
+Students learn that websites live on computers with addresses.
+
+Steps:
+
+1. Open Terminal or Command Prompt.
+2. Run:
+
+```bash
+ping google.com
+```
+
+3. Write down the IP address shown.
+4. Discuss: Did we type the IP address or the domain name?
+
+Expected learning:
+
+- `google.com` is easy for humans.
+- The computer still needs an IP address.
+
+### Practical 2: DNS Lookup
+
+Students see DNS as the phonebook of the internet.
+
+Steps:
+
+1. Run:
+
+```bash
+nslookup google.com
+```
+
+2. Identify:
+   - Domain name
+   - IP address
+   - DNS server
+
+Expected learning:
+
+- DNS converts a domain name into an IP address.
+
+### Practical 3: Visit a Website and Inspect Network Requests
+
+Students see that one webpage can load many files.
+
+Steps:
+
+1. Open Chrome.
+2. Open DevTools.
+3. Go to the Network tab.
+4. Visit:
+
+```text
+https://example.com
+```
+
+5. Refresh the page.
+6. Notice the request status code.
+
+Expected learning:
+
+- The browser sends requests.
+- The server sends responses.
+- `200` means success.
+
+### Practical 4: HTTP vs HTTPS
+
+Students understand why secure websites matter.
+
+Steps:
+
+1. Open a website with `https://`.
+2. Click the lock icon in the browser address bar.
+3. Discuss what "secure connection" means.
+4. Compare:
+
+```text
+http://example.com
+https://example.com
+```
+
+Expected learning:
+
+- HTTPS protects data while it travels.
+- Login pages and payment pages must use HTTPS.
+
+### Practical 5: Create the First HTML Page
+
+Students create the first version of the student profile page.
+
+Steps:
+
+1. Create a folder named `day-1-student-page`.
+2. Create `index.html`.
+3. Add this small starter code:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My First Page</title>
+</head>
+<body>
+  <h1>Hello, I am Anu</h1>
+  <p>I am learning how websites work.</p>
+</body>
+</html>
+```
+
+4. Open it in the browser.
+
+Expected learning:
+
+- HTML gives structure to the page.
+- The browser reads HTML and displays content.
+
+### Practical 6: Add Meaningful Page Sections
+
+Students improve the page with real content.
+
+Steps:
+
+1. Add an About section.
+2. Add a Learning Goals section.
+3. Add a Contact section.
+4. Use these tags:
+
+```html
+<header>
+<main>
+<section>
+<h1>
+<h2>
+<p>
+<ul>
+<li>
+```
+
+Expected learning:
+
+- Good HTML is organized.
+- Sections make content easier to understand.
+
+### Practical 7: Link CSS to HTML
+
+Students learn that HTML and CSS should be separate.
+
+Steps:
+
+1. Create `style.css`.
+2. Link it inside `index.html`:
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+3. Add simple body styles:
+
+```css
+body {
+  font-family: Arial, sans-serif;
+  background: #f6f8fb;
+  color: #1f2937;
+}
+```
+
+Expected learning:
+
+- HTML is content.
+- CSS is design.
+- Professional projects separate structure and style.
+
+### Practical 8: Improve Readability and UX
+
+Students apply simple UX rules.
+
+Steps:
+
+1. Add spacing using `padding` and `margin`.
+2. Limit content width using `max-width`.
+3. Add readable line height.
+4. Add card-like sections.
+
+Use:
+
+```css
+main {
+  max-width: 760px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+section {
+  background: white;
+  border: 1px solid #dbe3ea;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+```
+
+Expected learning:
+
+- UX is not decoration.
+- UX means making the page easy to read and use.
+
+### Practical 9: Add Navigation
+
+Students learn basic page navigation.
+
+Steps:
+
+1. Add a navigation link:
+
+```html
+<nav>
+  <a href="#about">About</a>
+  <a href="#goals">Goals</a>
+  <a href="#contact">Contact</a>
+</nav>
+```
+
+2. Add matching `id` values:
+
+```html
+<section id="about">
+<section id="goals">
+<section id="contact">
+```
+
+3. Click each link and test it.
+
+Expected learning:
+
+- Links help users move around.
+- Clear navigation improves UX.
+
+### Practical 10: Final Student Page Demo
+
+Students complete and present their page.
+
+Requirements:
+
+- Page has student name.
+- Page has About, Goals, and Contact sections.
+- Page uses a simple color palette.
+- Page has readable spacing.
+- Page has working navigation links.
+- Student can explain how the browser loads the page.
+
+Demo questions:
+
+1. What is the difference between domain and IP address?
+2. What does DNS do?
+3. What does HTML do?
+4. What does CSS do?
+5. What UX improvement did you add?
 
 ## Student Checklist
 
@@ -171,6 +441,8 @@ a {
 - [ ] I know what DNS does.
 - [ ] I know that HTML is structure and CSS is style.
 - [ ] I can explain why readable design matters.
+- [ ] I completed 10 Day 1 practicals.
+- [ ] I presented my final student page.
 
 ---
 
@@ -196,6 +468,12 @@ The browser will ask another server for a joke. The server will send data back a
 | `500` | Server error |
 | API | A way for apps to talk to each other |
 | JSON | A simple data format used by APIs |
+| Variable | A named box that stores data |
+| Function | A reusable block of code |
+| Event | Something the user does, like clicking a button |
+| Array | A list of values |
+| Object | Data stored as key-value pairs |
+| DOM | JavaScript's way to find and change HTML elements |
 | `fetch()` | JavaScript command to call an API |
 
 ## How the Data Flows
@@ -225,6 +503,207 @@ JavaScript displays the joke on the page
    - `script.js`
 3. Open `index.html` in the browser.
 4. Click the button.
+
+## Mini Module: JavaScript Basics for Beginners
+
+Before students call an API, they must understand the small JavaScript ideas used in the browser and later in Node.js.
+
+Keep this module practical. Do not teach advanced JavaScript yet.
+
+### JavaScript Basics Data Flow
+
+```text
+User clicks a button
+        |
+        v
+JavaScript hears the click event
+        |
+        v
+JavaScript runs a function
+        |
+        v
+JavaScript changes the HTML page
+```
+
+### JavaScript Concepts Students Need
+
+| Concept | Simple Meaning | Example |
+| --- | --- | --- |
+| `let` | Variable that can change | `let count = 0;` |
+| `const` | Variable that should not be reassigned | `const name = "Anu";` |
+| String | Text data | `"Hello"` |
+| Number | Numeric data | `25` |
+| Boolean | `true` or `false` | `isLoggedIn = false` |
+| Function | Reusable action | `function sayHello() {}` |
+| Array | List of values | `["HTML", "CSS", "JS"]` |
+| Object | One item with properties | `{ name: "Anu", age: 20 }` |
+| DOM | HTML page controlled by JavaScript | `document.getElementById()` |
+| Event Listener | Runs code when something happens | `button.addEventListener()` |
+| `async` / `await` | Waits for slow work, like API calls | `await fetch(url)` |
+
+## JavaScript Practical 1: Variables and Output
+
+Goal: Store simple data and print it.
+
+Create a file named `basics.js` and run it in the browser console or with Node.js.
+
+```javascript
+const studentName = "Anu";
+let age = 20;
+let isLearningBackend = true;
+
+console.log(studentName);
+console.log(age);
+console.log(isLearningBackend);
+```
+
+Expected learning:
+
+- Variables store data.
+- `console.log()` helps us see output while learning.
+
+## JavaScript Practical 2: Functions
+
+Goal: Create reusable code.
+
+```javascript
+function greetStudent(name) {
+  return `Hello, ${name}. Welcome to backend development.`;
+}
+
+const message = greetStudent("Anu");
+console.log(message);
+```
+
+Expected learning:
+
+- A function takes input.
+- A function can return output.
+
+## JavaScript Practical 3: Arrays
+
+Goal: Store a list of learning topics.
+
+```javascript
+const topics = ["HTML", "CSS", "JavaScript", "APIs"];
+
+console.log(topics[0]);
+console.log(topics[1]);
+console.log(topics.length);
+```
+
+Expected learning:
+
+- Arrays start counting from `0`.
+- Arrays are useful for lists like tasks, users, and posts.
+
+## JavaScript Practical 4: Objects
+
+Goal: Store one real-world item.
+
+```javascript
+const student = {
+  name: "Anu",
+  course: "Full Stack Development",
+  completedDay1: true
+};
+
+console.log(student.name);
+console.log(student.course);
+console.log(student.completedDay1);
+```
+
+Expected learning:
+
+- Objects store related details together.
+- JSON looks very similar to JavaScript objects.
+
+## JavaScript Practical 5: Button Click Event
+
+Goal: Make the page interactive.
+
+Add this to `index.html`:
+
+```html
+<p id="message">Click the button to start.</p>
+<button id="startButton">Start</button>
+```
+
+Add this to `script.js`:
+
+```javascript
+const message = document.getElementById("message");
+const startButton = document.getElementById("startButton");
+
+startButton.addEventListener("click", () => {
+  message.textContent = "JavaScript is working.";
+});
+```
+
+Expected learning:
+
+- JavaScript can find HTML elements.
+- JavaScript can react to user actions.
+- JavaScript can update the page without reloading.
+
+## JavaScript Practical 6: Mini Counter App
+
+Goal: Practice variables, events, and DOM updates together.
+
+Add this to `index.html`:
+
+```html
+<h2>Counter: <span id="count">0</span></h2>
+<button id="plusButton">Add One</button>
+```
+
+Add this to `script.js`:
+
+```javascript
+let count = 0;
+
+const countText = document.getElementById("count");
+const plusButton = document.getElementById("plusButton");
+
+plusButton.addEventListener("click", () => {
+  count = count + 1;
+  countText.textContent = count;
+});
+```
+
+Expected learning:
+
+- `let` is used when a value changes.
+- UI can change based on JavaScript data.
+
+## JavaScript Practical 7: JSON Preview
+
+Goal: Understand the shape of API data before using `fetch()`.
+
+```javascript
+const joke = {
+  setup: "Why did the developer go broke?",
+  punchline: "Because they used up all their cache."
+};
+
+console.log(joke.setup);
+console.log(joke.punchline);
+```
+
+Expected learning:
+
+- API responses often come as JSON.
+- JSON data is read using property names.
+
+## JavaScript Readiness Checklist
+
+- [ ] I can create `let` and `const` variables.
+- [ ] I can write a simple function.
+- [ ] I can use an array.
+- [ ] I can use an object.
+- [ ] I can select an HTML element with JavaScript.
+- [ ] I can run code when a button is clicked.
+- [ ] I understand that API data looks like objects and arrays.
 
 ## The Code
 
@@ -307,6 +786,9 @@ button {
 ## Student Checklist
 
 - [ ] I can explain client and server.
+- [ ] I understand JavaScript variables, functions, arrays, and objects.
+- [ ] I can use a button click event.
+- [ ] I can change text on a page using JavaScript.
 - [ ] I know what an API is.
 - [ ] I can read simple JSON.
 - [ ] I used `fetch()` to get data.
@@ -314,6 +796,13 @@ button {
 ---
 
 # Day 3: Building Your Own Server with Express.js
+
+## What are Node.js and Express.js?
+
+Before building our server, it's important to understand the tools we are using:
+
+- **Node.js**: Normally, JavaScript only runs *inside* a web browser (like Chrome or Safari) to make web pages interactive. **Node.js** is a special runtime environment that allows JavaScript to run directly *on your computer* or *on a server*. This means you can use JavaScript to read files, connect to databases, and act as a backend.
+- **Express.js**: Writing a web server from scratch in pure Node.js can be complicated and repetitive. **Express.js** is a "framework" (a pre-written library of code) that makes building web servers and APIs incredibly simple. It handles routing and HTTP requests easily.
 
 ## Goal / Project Intro
 
