@@ -32,13 +32,14 @@ Avoid too much theory. Students should type, run, break, fix, and understand.
 
 ---
 
-# Day 1: How the Web Works and UI/UX Basics
+# Day 1: How the Web Works, UI/UX Basics, and Introduction to React
 
 ## Goal / Project Intro
 
 Today we build a simple student profile page called **The Thoughtful Student Page**.
+Then, we will convert this page into a modern **React Application** using Tailwind CSS and React Router.
 
-The goal is not just to write HTML. The goal is to understand what a website is, how users reach it, and how good design helps people use it.
+The goal is not just to write HTML. The goal is to understand what a website is, how users reach it, how good design helps people use it, and how modern frameworks like React make it easier to build interactive applications.
 
 ## Concepts Introduced
 
@@ -53,6 +54,13 @@ The goal is not just to write HTML. The goal is to understand what a website is,
 | HTTPS | Secure HTTP |
 | UI | What the user sees |
 | UX | How easy and pleasant the app feels to use |
+| Node.js | Tool installed on your computer to run JavaScript outside the browser |
+| React | A popular JavaScript library for building user interfaces |
+| Vite | A tool to quickly set up and build React projects |
+| Component | A reusable piece of a UI (like a button or a header) |
+| JSX | HTML-like code written directly inside JavaScript |
+| Tailwind CSS | A utility-first CSS framework for rapid styling |
+| React Router | A library to navigate between multiple pages in a React app |
 
 ## How the Data Flows
 
@@ -173,15 +181,15 @@ a {
 | Time | Activity |
 | --- | --- |
 | 09:30 - 10:00 | Icebreaker: What happens when we open a website? |
-| 10:00 - 10:45 | Practicals 1 and 2 |
-| 10:45 - 11:00 | Break |
-| 11:00 - 12:15 | Practicals 3 and 4 |
-| 12:15 - 01:00 | Practical 5 |
+| 10:00 - 11:30 | Practicals 1, 2, 3, and 4 (Internet Basics) |
+| 11:30 - 11:45 | Break |
+| 11:45 - 01:00 | Practicals 5, 6, and 7 (HTML/CSS Basics) |
 | 01:00 - 02:00 | Lunch |
-| 02:00 - 03:15 | Practicals 6 and 7 |
-| 03:15 - 03:30 | Break |
-| 03:30 - 04:45 | Practicals 8 and 9 |
-| 04:45 - 05:30 | Practical 10 and student demo |
+| 02:00 - 03:00 | Practicals 8 and 9 (UX and Navigation) |
+| 03:00 - 03:15 | Break |
+| 03:15 - 03:45 | Practical 10 (Install Node.js & Vite React App) |
+| 03:45 - 04:30 | Practical 11 (Tailwind CSS) & Practical 12 (React Router) |
+| 04:30 - 05:30 | Practical 13 (Convert to React) and Practical 14 (Student Demo) |
 
 ## Day 1 Practicals
 
@@ -424,26 +432,175 @@ Expected learning:
 - Links help users move around.
 - Clear navigation improves UX.
 
-### Practical 10: Final Student Page Demo
+### Practical 10: Install Node.js and Create a React App with Vite
 
-Students complete and present their page.
+Goal: Set up a modern frontend development environment.
+
+Steps:
+1. Download and install [Node.js](https://nodejs.org/) on your laptop. (Node.js comes with `npm`).
+2. Open your Terminal.
+3. Run the following command to create a new React project using Vite:
+```bash
+npm create vite@latest day-1-react-profile -- --template react
+```
+4. Enter the folder and install the default packages:
+```bash
+cd day-1-react-profile
+npm install
+```
+5. Start the development server:
+```bash
+npm run dev
+```
+6. Open the local URL (usually `http://localhost:5173`) in your browser.
+
+Expected learning:
+- React is a JavaScript library that makes building UIs easier by splitting the page into reusable **Components**.
+- Vite is a fast build tool that sets up the React project for you.
+- JSX allows us to write HTML-like syntax directly inside JavaScript files (`.jsx`).
+
+### Practical 11: Install and Configure Tailwind CSS
+
+Goal: Use a modern utility-first CSS framework instead of writing raw CSS.
+
+Steps:
+1. Stop your development server (`Ctrl + C`).
+2. Install Tailwind CSS:
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+3. Update `tailwind.config.js` to scan your React files:
+```javascript
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+4. Replace the contents of `src/index.css` with the Tailwind directives:
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+5. Restart your server: `npm run dev`.
+
+Expected learning:
+- Tailwind lets you style elements directly in the HTML/JSX using classes like `text-center`, `bg-blue-500`, and `p-4` instead of creating separate `.css` files.
+
+### Practical 12: Add React Router
+
+Goal: Allow users to navigate between different pages without the browser reloading.
+
+Steps:
+1. Install React Router:
+```bash
+npm install react-router-dom
+```
+2. Open `src/main.jsx` and wrap the `<App />` component in a `<BrowserRouter>`:
+```javascript
+import { BrowserRouter } from 'react-router-dom';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+)
+```
+
+Expected learning:
+- Traditional HTML pages reload the whole browser window when you click a link. 
+- React Router swaps out the components instantly, making the application feel much faster.
+
+### Practical 13: Convert the Student Page to React
+
+Goal: Rebuild the HTML page using React, Tailwind, and React Router.
+
+Steps:
+1. Open `src/App.jsx`.
+2. Delete the default Vite code.
+3. Build the new React version using Tailwind classes:
+
+```jsx
+import { Routes, Route, Link } from 'react-router-dom';
+
+function Home() {
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-4">About Me</h2>
+      <p>I enjoy learning technology step by step.</p>
+      
+      <h2 className="text-2xl font-bold mt-6 mb-4">My Learning Goals</h2>
+      <ul className="list-disc ml-6">
+        <li>Understand websites</li>
+        <li>Build simple React apps</li>
+        <li>Create my first backend API</li>
+      </ul>
+    </div>
+  );
+}
+
+function Contact() {
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-4">Contact</h2>
+      <p>Email: anu@example.com</p>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="font-sans text-gray-800 bg-gray-50 min-h-screen">
+      <header className="bg-teal-700 text-white p-8 text-center">
+        <h1 className="text-4xl font-bold">Hello, I am Anu</h1>
+        <p className="mt-2">A beginner learning how the web works.</p>
+      </header>
+      
+      <nav className="bg-teal-600 p-4 text-white flex justify-center gap-4">
+        <Link to="/" className="hover:underline font-bold">Home</Link>
+        <Link to="/contact" className="hover:underline font-bold">Contact</Link>
+      </nav>
+
+      <main className="max-w-3xl mx-auto mt-6 bg-white border rounded-lg shadow-sm">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+    </div>
+  );
+}
+```
+4. Click the "Home" and "Contact" links in the browser and watch the content change instantly.
+
+Expected learning:
+- React components (`Home`, `Contact`, `App`) make code organized.
+- React Router (`Routes`, `Route`, `Link`) changes pages without reloading.
+- Tailwind CSS (`className="bg-teal-700 p-8"`) makes styling rapid.
+
+### Practical 14: Final Student Demo
+
+Students complete and present their React page.
 
 Requirements:
-
 - Page has student name.
-- Page has About, Goals, and Contact sections.
-- Page uses a simple color palette.
-- Page has readable spacing.
-- Page has working navigation links.
-- Student can explain how the browser loads the page.
+- Page uses Tailwind CSS for styling.
+- Page has working React Router navigation between Home and Contact.
+- Student can explain the benefits of React over plain HTML.
 
 Demo questions:
-
 1. What is the difference between domain and IP address?
 2. What does DNS do?
-3. What does HTML do?
-4. What does CSS do?
-5. What UX improvement did you add?
+3. What is a React Component?
+4. How does Tailwind CSS differ from standard CSS?
+5. How does React Router improve UX compared to standard HTML links?
 
 ## Student Checklist
 
@@ -451,8 +608,11 @@ Demo questions:
 - [ ] I know what DNS does.
 - [ ] I know that HTML is structure and CSS is style.
 - [ ] I can explain why readable design matters.
-- [ ] I completed 10 Day 1 practicals.
-- [ ] I presented my final student page.
+- [ ] I installed Node.js and created a Vite React app.
+- [ ] I understand how Tailwind CSS classes work.
+- [ ] I set up React Router to change pages.
+- [ ] I completed 14 Day 1 practicals.
+- [ ] I presented my final React student page.
 
 ---
 
@@ -1997,7 +2157,7 @@ Today students turn the backend into a simple full stack product.
 
 Project idea: **Task Dashboard**
 
-The backend is the secure API from Day 5. The frontend is generated with Lovable, then connected to the local API.
+The backend is the secure API from Day 5. The frontend is generated using the React, Tailwind CSS, and React Router skills they learned on Day 1 (assisted by an AI UI builder like Lovable), then connected to the local API.
 
 ## Concepts Introduced
 
@@ -2084,6 +2244,7 @@ Design:
 In the frontend project, use one API base URL:
 
 ```javascript
+// Use http://localhost:3000 for local testing, or your Render URL for production!
 const API_URL = "http://localhost:3000";
 ```
 
@@ -2158,4 +2319,4 @@ That one sentence is the heart of beginner full stack development.
 - Let students see errors early.
 - Use Thunder Client or Postman every day from Day 3 onward.
 - Use simple names like `Task`, `User`, `title`, and `completed`.
-- Save advanced topics like refresh tokens, deployment, TypeScript, Docker, and testing for the next course.
+- Save advanced topics like refresh tokens, TypeScript, Docker, and testing for the next course.
