@@ -1,10 +1,10 @@
-# 6-Day Full Stack Development Curriculum
+# 7-Day Full Stack Development Curriculum
 
 Backend Focus, Beginner Friendly
 
 ## Course Promise
 
-By the end of 6 days, students will understand how the web works, build a small backend API, save data in MongoDB, add simple login security, and connect the backend to an AI-generated React frontend.
+By the end of 7 days, students will understand how the web works, build a small backend API, save data in MongoDB, add simple login security, learn DevOps basics, and connect the backend to an AI-generated React frontend.
 
 This course is designed for beginners. Keep every explanation practical, visual, and connected to one small project.
 
@@ -1881,7 +1881,42 @@ Instead of one giant file, the industry standard is to split the code into speci
 
 ---
 
-# Day 6: Capstone - AI-Assisted Full Stack Product
+# Day 6: DevOps Basics
+
+## Goal / Project Intro
+
+Today students learn how to deploy their backend API to the cloud and understand the basics of operations. We introduce cloud hosting, CI/CD, and basic infrastructure concepts.
+
+## Concepts Introduced
+
+| Term | Simple Meaning |
+| --- | --- |
+| DevOps | Development and Operations working together |
+| Deployment | Putting your app on a public server |
+| Hosting | Renting space on the internet |
+| CI/CD | Continuous Integration and Continuous Deployment |
+| Cloudflare | A platform for running edge apps and APIs |
+
+## 8-Hour Practical Plan
+
+| Time | Activity |
+| --- | --- |
+| 09:30 - 10:30 | What is DevOps and Deployment? |
+| 10:30 - 12:00 | Set up a Cloudflare Workers Project |
+| 12:00 - 01:00 | Lunch |
+| 01:00 - 03:00 | Deploy the Node.js API to the Cloud |
+| 03:00 - 04:30 | Introduction to CI/CD & GitHub |
+| 04:30 - 05:30 | Verify Public API and Review |
+
+## Student Checklist
+
+- [ ] I can explain what deployment means.
+- [ ] I successfully deployed my API to the cloud.
+- [ ] I understand what CI/CD means.
+
+---
+
+# Day 7: Capstone - AI-Assisted Full Stack Product
 
 ## Goal / Project Intro
 
