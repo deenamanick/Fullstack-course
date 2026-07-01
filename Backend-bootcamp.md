@@ -1881,11 +1881,11 @@ Instead of one giant file, the industry standard is to split the code into speci
 
 ---
 
-# Day 6: DevOps Basics
+# Day 6: DevOps Basics & Deployment
 
 ## Goal / Project Intro
 
-Today students learn how to deploy their backend API to the cloud and understand the basics of operations. We introduce cloud hosting, CI/CD, and basic infrastructure concepts.
+Today students learn how to deploy their MERN stack application to the internet. We introduce cloud hosting, CI/CD, and how to host the backend (Node/Express) and frontend (React) separately.
 
 ## Concepts Introduced
 
@@ -1894,25 +1894,98 @@ Today students learn how to deploy their backend API to the cloud and understand
 | DevOps | Development and Operations working together |
 | Deployment | Putting your app on a public server |
 | Hosting | Renting space on the internet |
+| PaaS | Platform as a Service (e.g., Render, Railway) |
 | CI/CD | Continuous Integration and Continuous Deployment |
-| Cloudflare | A platform for running edge apps and APIs |
+| CORS | Cross-Origin Resource Sharing (connecting separate frontend and backend) |
 
 ## 8-Hour Practical Plan
 
 | Time | Activity |
 | --- | --- |
-| 09:30 - 10:30 | What is DevOps and Deployment? |
-| 10:30 - 12:00 | Set up a Cloudflare Workers Project |
+| 09:30 - 10:30 | What is DevOps and how do we deploy MERN? |
+| 10:30 - 12:00 | Prepare the Node.js API (Environment Variables & CORS) |
 | 12:00 - 01:00 | Lunch |
-| 01:00 - 03:00 | Deploy the Node.js API to the Cloud |
-| 03:00 - 04:30 | Introduction to CI/CD & GitHub |
-| 04:30 - 05:30 | Verify Public API and Review |
+| 01:00 - 03:00 | Deploy the Node/Express Backend to Render |
+| 03:00 - 04:30 | Connect MongoDB Atlas and Deploy the React Frontend to Vercel |
+| 04:30 - 05:30 | End-to-End Test and GitHub integration |
+
+## Day 6 Practicals
+
+### Practical 1: Understand CORS
+
+Goal: Allow the frontend and backend to talk to each other. When they are hosted on different URLs, the browser blocks communication for security unless you allow it.
+
+In your backend folder, install the `cors` package:
+
+```bash
+npm install cors
+```
+
+In your `server.js`, add:
+
+```javascript
+const cors = require("cors");
+app.use(cors()); // Allow all origins for now
+```
+
+Expected learning:
+- Browsers block cross-origin requests by default.
+- CORS (Cross-Origin Resource Sharing) tells the browser it's safe.
+
+### Practical 2: Prepare Environment Variables for Production
+
+Goal: Never hardcode your MongoDB password or Port.
+
+In your `server.js`, ensure you are using `process.env.PORT` instead of a hardcoded port:
+
+```javascript
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+```
+
+Expected learning:
+- Hosting providers like Render will assign a dynamic port. Using `process.env.PORT` ensures your app starts correctly.
+
+### Practical 3: Deploy the Backend to Render
+
+Goal: Put your Express API on the public internet.
+
+Steps:
+1. Create a GitHub repository and push your backend code.
+2. Go to [Render.com](https://render.com) and create an account.
+3. Create a new "Web Service" and connect your GitHub repository.
+4. Set the Build Command to `npm install` and the Start Command to `node server.js`.
+5. Under Environment Variables, add `MONGO_URL` (your Atlas connection string) and `JWT_SECRET`.
+6. Click Deploy!
+
+Expected learning:
+- Render reads your `package.json` to install dependencies and run your app.
+- Environment variables must be set in the Render dashboard, not in a `.env` file.
+
+### Practical 4: Deploy the React Frontend to Vercel
+
+Goal: Host your React application for free.
+
+Steps:
+1. In your React code, update the `API_URL` to point to your new Render backend URL instead of `http://localhost:3000`.
+2. Push your React code to a new GitHub repository.
+3. Go to [Vercel.com](https://vercel.com) and connect your GitHub account.
+4. Import your React repository.
+5. Vercel will automatically detect that it's a React app. Click Deploy.
+
+Expected learning:
+- Frontend code becomes static HTML, CSS, and JS.
+- Vercel is highly optimized for hosting frontend frameworks.
 
 ## Student Checklist
 
 - [ ] I can explain what deployment means.
-- [ ] I successfully deployed my API to the cloud.
-- [ ] I understand what CI/CD means.
+- [ ] I successfully deployed my Node API to Render.
+- [ ] I successfully deployed my React frontend to Vercel.
+- [ ] I understand how CORS connects the frontend and backend.
 
 ---
 
